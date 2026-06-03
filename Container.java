@@ -28,12 +28,8 @@ public class Container {
         this.packages = new ArrayList<Package>();
     }
 
-    /**
-     * Convenience constructor: default capacity of 500 kg.
-     * TODO M3: Chain to the 2-param constructor using this(...)
-     */
     public Container(String destination) {
-        // TODO M3: Write the this(...) call here
+        this(destination, 500.0);
     }
 
     // --- Getters ---

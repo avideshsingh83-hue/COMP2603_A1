@@ -11,11 +11,12 @@ public class FreightTerminal {
     private ArrayList<Container> activeContainers;
     private ArrayList<Container> dispatchedContainers;
 
-    /**
-     * TODO M2: Initialise terminalName and all three ArrayLists.
-     */
     public FreightTerminal(String terminalName) {
-        // TODO M2
+        this.terminalName = terminalName;
+
+        this.pendingPackages = new ArrayList<Package>();
+        this.activeContainers = new ArrayList<Container>();
+        this.dispatchedContainers = new ArrayList<Container>();
     }
 
     /**

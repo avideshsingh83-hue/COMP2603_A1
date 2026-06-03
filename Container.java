@@ -13,16 +13,19 @@ public class Container {
     private double maxWeightKg;
     private ArrayList<Package> packages;
 
-    /**
-     * Full constructor with destination and max weight.
-     * TODO M2: Implement this constructor.
-     *   - Validate: destination non-null, maxWeightKg > 0
-     *   - Auto-assign containerId using String.format("CNT-%03d", nextContainerId)
-     *   - Increment nextContainerId
-     *   - Initialise the packages ArrayList
-     */
     public Container(String destination, double maxWeightKg) {
-        // TODO M2
+        if(destination == null){
+            throw new IllegalArgumentException("Destination must not be NULL!");
+        }
+        if(maxWeightKg <= 0){
+            throw new IllegalArgumentException("Inaccurate weight!");
+        }
+
+        this.containerId = String.format("CNT-%03d", nextContainerId);
+        nextContainerId = nextContainerId + 1;
+
+        this.maxWeightKg = maxWeightKg;
+        this.packages = new ArrayList<Package>();
     }
 
     /**

@@ -6,15 +6,12 @@ import java.util.List;
  * Each package is auto-assigned a unique tracking ID in the format PKG-XXXX.
  */
 public class Package {
-
-    // TODO M1: Initialise this static counter to 1.
-    private static int nextTrackingNumber;
+    private static int nextTrackingNumber = 1;
 
     private static final List<String> VALID_DESTINATIONS = Arrays.asList(
         "Trinidad", "Barbados", "Jamaica", "Antigua", "Grenada"
     );
 
-    // TODO M1: These fields are declared but not yet assigned.
     // Your constructors (M2, M3) must assign them.
     private String trackingId;
     private String senderName;

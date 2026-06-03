@@ -5,8 +5,6 @@ import java.util.ArrayList;
  * dispatches containers, and produces financial reports.
  */
 public class FreightTerminal {
-
-    // TODO M1: These fields are declared but not yet initialised.
     // Your constructor (M2) must initialise them.
     private String terminalName;
     private ArrayList<Package> pendingPackages;

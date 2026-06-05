@@ -1,10 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Represents a single cargo item in the Caribbean freight system.
- * Each package is auto-assigned a unique tracking ID in the format PKG-XXXX.
- */
+
 public class Package {
     private static int nextTrackingNumber = 1;
 
@@ -12,7 +9,6 @@ public class Package {
         "Trinidad", "Barbados", "Jamaica", "Antigua", "Grenada"
     );
 
-    // Your constructors (M2, M3) must assign them.
     private String trackingId;
     private String senderName;
     private String receiverName;
@@ -155,14 +151,14 @@ public class Package {
         return Math.round(cost*100) / 100.0;
     }
 
-    /**
-     * TODO M7: Return a string in this format:
-     *   "PKG-0001  Alice -> Bob  Trinidad  5.00 kg  $40.00"
-     * If fragile, append "  [FRAGILE]" at the end.
-     * Use String.format for formatting.
-     */
     @Override
     public String toString() {
-        return ""; // TODO M7
+        String base = String.format("PKG-%04d"+ this.trackingId +"   %s"+ this.senderName +" -> %s"+ this.receiverName +"   %s"+ this.destination +"   %.2f"+ this.weightKg +" kg   $%.2f"+ this.getShippingCost());
+
+        if(isFragile){
+            base = base + "   [FRAGILE]";
+        }
+
+        return base; 
     }
 }

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Container {
     private static int nextContainerId = 1;
 
-    // Your constructors (M2, M3) must assign them.
     private String containerId;
     private String destination;
     private double maxWeightKg;
@@ -44,42 +43,38 @@ public class Container {
         return this.maxWeightKg;
     }
 
-    /**
-     * TODO M8: Add a package to this container.
-     *   Return false if: p is null, p's destination does not match, or
-     *   adding p would exceed maxWeightKg.
-     *   Return true on success.
-     */
     public boolean addPackage(Package p) {
-        return false; // TODO M8
+        if(p == null || p.getDestination() != this.destination || getCurrentWeightKg() + p.getWeightKg() > maxWeightKg){
+            return false;
+        }
+        else{
+            packages.add(p);
+            return true;
+        }
     }
 
-    /**
-     * TODO M8: Return the sum of all packages' weightKg.
-     */
     public double getCurrentWeightKg() {
-        return 0.0; // TODO M8
+        double sum=0.0;
+        for(Package pkgs: packages){
+            sum = sum + pkgs.getWeightKg();
+        }
+        return sum; 
     }
 
-    /**
-     * TODO M8: Return maxWeightKg - getCurrentWeightKg()
-     */
     public double getRemainingCapacityKg() {
-        return 0.0; // TODO M8
+        return maxWeightKg - getCurrentWeightKg(); 
     }
 
-    /**
-     * TODO M8: Return the number of packages in this container.
-     */
     public int getPackageCount() {
-        return 0; // TODO M8
+        return packages.size(); 
     }
 
-    /**
-     * TODO M8: Return the sum of all packages' getShippingCost().
-     */
     public double getTotalRevenue() {
-        return 0.0; // TODO M8
+        double sum = 0.0;
+        for(Package pkgs: packages){
+            sum = sum + pkgs.getShippingCost();
+        }
+        return sum;
     }
 
     /**

@@ -25,7 +25,7 @@ public class FreightTerminal {
     }
 
     public int getPendingCount() {
-        return pendingPackages.size(); // TODO M4
+        return pendingPackages.size();
     }
 
     /**

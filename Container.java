@@ -32,8 +32,17 @@ public class Container {
         this(destination, 500.0);
     }
 
-    // --- Getters ---
-    // TODO M4: Write getters for containerId, destination, maxWeightKg
+    public String getContainerId(){
+        return this.containerId;
+    }
+
+    public String getDesination(){
+        return this.destination;
+    }
+
+    public double getMaxWeightKg(){
+        return this.maxWeightKg;
+    }
 
     /**
      * TODO M8: Add a package to this container.

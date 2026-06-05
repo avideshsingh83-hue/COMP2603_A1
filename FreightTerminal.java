@@ -5,7 +5,6 @@ import java.util.ArrayList;
  * dispatches containers, and produces financial reports.
  */
 public class FreightTerminal {
-    // Your constructor (M2) must initialise them.
     private String terminalName;
     private ArrayList<Package> pendingPackages;
     private ArrayList<Container> activeContainers;
@@ -19,18 +18,14 @@ public class FreightTerminal {
         this.dispatchedContainers = new ArrayList<Container>();
     }
 
-    /**
-     * TODO M4: Add a non-null package to pendingPackages.
-     */
     public void receivePackage(Package p) {
-        // TODO M4
+        if(p != null){
+            pendingPackages.add(p);
+        }
     }
 
-    /**
-     * TODO M4: Return the size of pendingPackages.
-     */
     public int getPendingCount() {
-        return 0; // TODO M4
+        return pendingPackages.size(); // TODO M4
     }
 
     /**

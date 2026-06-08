@@ -153,8 +153,7 @@ public class Package {
 
     @Override
     public String toString() {
-        String base = String.format("PKG-%04d"+ this.trackingId +"   %s"+ this.senderName +" -> %s"+ this.receiverName +"   %s"+ this.destination +"   %.2f"+ this.weightKg +" kg   $%.2f"+ this.getShippingCost());
-
+        String base = String.format("PKG-%04d   %s -> %s   %s   %.2f kg   $%.2f", Integer.parseInt(trackingId.substring(4)), senderName, receiverName, destination, getBillableWeightKg(), getShippingCost());
         if(isFragile){
             base = base + "   [FRAGILE]";
         }

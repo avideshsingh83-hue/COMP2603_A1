@@ -44,7 +44,7 @@ public class Container {
     }
 
     public boolean addPackage(Package p) {
-        if(p == null || p.getDestination() != this.destination || getCurrentWeightKg() + p.getWeightKg() > maxWeightKg){
+        if((p == null) || (!p.getDestination().equals(destination)) || (getCurrentWeightKg() + p.getWeightKg() > maxWeightKg)){
             return false;
         }
         else{

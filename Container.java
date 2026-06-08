@@ -77,19 +77,17 @@ public class Container {
         return sum;
     }
 
-    /**
-     * TODO M9: Build and return the multi-line manifest string.
-     * Format:
-     *   === CNT-001 -> Trinidad (3 packages, 17.00 / 500.00 kg) ===
-     *     PKG-0001  Alice -> Bob  Trinidad  5.00 kg  $40.00
-     *     PKG-0005  Ivy -> Jack  Trinidad  8.00 kg  $95.00  [FRAGILE]
-     *     ...
-     *     Container revenue: $199.50
-     * Each package line is indented with 2 spaces.
-     * Use StringBuilder and String.format.
-     */
     public String getManifest() {
-        return ""; // TODO M9
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("=== %s -> %s (%d packages, %.2f / %.2f kg) ===\n",
+                containerId, destination, getPackageCount(), getCurrentWeightKg(), maxWeightKg));
+        for(Package pkg: packages){
+            sb.append(String.format("  %s  %s -> %s  %s  %.2f kg  $%.2f\n",
+                    pkg.getTrackingId(), pkg.getSenderName(), pkg.getReceiverName(),
+                    pkg.getDestination(), pkg.getWeightKg(), pkg.getShippingCost()));
+        }
+        sb.append(String.format("Container revenue: $%.2f\n", getTotalRevenue()));
+        return sb.toString();
     }
 
     /**
@@ -99,12 +97,8 @@ public class Container {
         return packages;
     }
 
-    /**
-     * TODO M9: Return a one-line summary:
-     *   "CNT-001 -> Trinidad [3 packages, 17.00 / 500.00 kg]"
-     */
     @Override
     public String toString() {
-        return ""; // TODO M9
+        return String.format("%s -> %s [%d packages, %.2f / %.2f kg]", containerId, destination, packages.size(), getCurrentWeightKg(), maxWeightKg);
     }
 }

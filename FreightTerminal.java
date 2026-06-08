@@ -50,37 +50,51 @@ public class FreightTerminal {
         return destinations.size();
     }
 
-    /**
-     * TODO M9: Move all activeContainers to dispatchedContainers.
-     *   Clear activeContainers. Return the count dispatched.
-     */
     public int dispatchAll() {
-        return 0; // TODO M9
+        for(Container c: activeContainers){
+            dispatchedContainers.add(c);
+        }
+        activeContainers.clear();
+        return dispatchedContainers.size();
     }
 
-    /**
-     * TODO M9: Return the sum of getTotalRevenue() across all
-     *   dispatched containers.
-     */
     public double getTotalRevenue() {
-        return 0.0; // TODO M9
+        double sum = 0.0;
+        for(Container c: dispatchedContainers){
+            sum = sum + c.getTotalRevenue();
+        }
+        return sum;
     }
 
-    /**
-     * TODO M9: Return the sum of getPackageCount() across all
-     *   dispatched containers.
-     */
     public int getTotalPackagesShipped() {
-        return 0; // TODO M9
+        int pkgCount = 0;
+        for(Container c: dispatchedContainers){
+            pkgCount = pkgCount + c.getPackageCount();
+        }
+        return pkgCount;
     }
 
-    /**
-     * TODO M9: Search pending, active containers, and dispatched
-     *   containers for a package with the given tracking ID.
-     *   Return the Package or null if not found.
-     */
     public Package findPackage(String trackingId) {
-        return null; // TODO M9
+        for(Package pkg: pendingPackages){
+            if(pkg.getTrackingId().equals(trackingId)){
+                return pkg;
+            }
+        }
+        for(Container c: activeContainers){
+            for(Package pkg: c.getPackages()){
+                if(pkg.getTrackingId().equals(trackingId)){
+                    return pkg;
+                }
+            }
+        }
+        for(Container c: dispatchedContainers){
+            for(Package pkg: c.getPackages()){
+                if(pkg.getTrackingId().equals(trackingId)){
+                    return pkg;
+                }
+            }
+        }
+        return null;
     }
 
     /**

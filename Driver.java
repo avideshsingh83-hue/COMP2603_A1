@@ -95,8 +95,7 @@ public class Driver {
         // Step 7: Dispatch all containers
         // TODO M10: Call dispatchAll() and print "Dispatched N containers"
         terminal.dispatchAll();
-        System.out.printf("Dispatched "+ terminal.getTotalPackagesShipped() +" containers");
-        System.out.println();
+        System.out.printf("Dispatched "+ terminal.getTotalPackagesShipped() +" containers\n");
 
         // Step 8: Print daily report
         // TODO M10: Call printDailyReport()

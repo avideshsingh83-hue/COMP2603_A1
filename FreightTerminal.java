@@ -103,7 +103,7 @@ public class FreightTerminal {
 
     public void printDailyReport() {
         StringBuilder sb = new StringBuilder();
-         sb.append(String.format("=== Daily Report: %s ===\n", terminalName));
+         sb.append(String.format("\n=== Daily Report: %s ===\n", terminalName));
          sb.append(String.format("Packages received:  %d\n", getPendingCount() + getTotalPackagesShipped()));
          sb.append(String.format("Containers packed:  %d\n", activeContainers.size() + dispatchedContainers.size()));
          sb.append(String.format("Packages shipped:   %d\n", getTotalPackagesShipped()));
@@ -111,7 +111,7 @@ public class FreightTerminal {
          
          sb.append("\nRevenue by destination:\n");
         for(Container c: dispatchedContainers){
-            System.out.printf("  %-12s $%.2f (%d packages)\n", c.getDestination() + ":", c.getTotalRevenue(), c.getPackageCount());
+            sb.append(String.format("  %-12s $%.2f (%d packages)\n", c.getDestination() + ":", c.getTotalRevenue(), c.getPackageCount()));
 
         }
 

@@ -20,6 +20,7 @@ public class Container {
         this.containerId = String.format("CNT-%03d", nextContainerId);
         nextContainerId = nextContainerId + 1;
 
+        this.destination = destination;
         this.maxWeightKg = maxWeightKg;
         this.packages = new ArrayList<Package>();
     }
@@ -79,11 +80,9 @@ public class Container {
         sb.append(String.format("=== %s -> %s (%d packages, %.2f / %.2f kg) ===\n",
                 containerId, destination, getPackageCount(), getCurrentWeightKg(), maxWeightKg));
         for(Package pkg: packages){
-            sb.append(String.format("  %s  %s -> %s  %s  %.2f kg  $%.2f\n",
-                    pkg.getTrackingId(), pkg.getSenderName(), pkg.getReceiverName(),
-                    pkg.getDestination(), pkg.getWeightKg(), pkg.getShippingCost()));
+            sb.append("  ").append(pkg.toString()).append("\n");
         }
-        sb.append(String.format("Container revenue: $%.2f\n", getTotalRevenue()));
+        sb.append(String.format("  Container revenue: $%.2f\n", getTotalRevenue()));
         return sb.toString();
     }
 

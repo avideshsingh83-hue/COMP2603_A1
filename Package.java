@@ -107,7 +107,7 @@ public class Package {
     }
 
     public double getBillableWeightKg() {
-        return Math.max(weightKg, getVolumeCm3());
+        return Math.max(weightKg, getVolumetricWeightKg());
     }
 
     public double getShippingCost() {

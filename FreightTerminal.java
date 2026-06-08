@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 
-/**
- * The hub that receives packages, packs them into containers,
- * dispatches containers, and produces financial reports.
- */
+
 public class FreightTerminal {
     private String terminalName;
     private ArrayList<Package> pendingPackages;
@@ -104,21 +101,20 @@ public class FreightTerminal {
         return activeContainers;
     }
 
-    /**
-     * TODO M10: Print the formatted daily report.
-     * Format:
-     *   === Daily Report: Port of Spain Hub ===
-     *   Packages received:  12
-     *   Containers packed:  5
-     *   Packages shipped:   12
-     *   Total revenue:      $3248.50
-     *
-     *   Revenue by destination:
-     *     Trinidad:    $199.50 (3 packages)
-     *     Barbados:    $1403.00 (3 packages)
-     *     ...
-     */
     public void printDailyReport() {
-        // TODO M10
+        StringBuilder sb = new StringBuilder();
+         sb.append(String.format("=== Daily Report: %s ===\n", terminalName));
+         sb.append(String.format("Packages received:  %d\n", getPendingCount() + getTotalPackagesShipped()));
+         sb.append(String.format("Containers packed:  %d\n", activeContainers.size() + dispatchedContainers.size()));
+         sb.append(String.format("Packages shipped:   %d\n", getTotalPackagesShipped()));
+         sb.append(String.format("Total revenue:      $%.2f\n", getTotalRevenue()));
+         
+         sb.append("\nRevenue by destination:\n");
+        for(Container c: dispatchedContainers){
+            System.out.printf("  %-12s $%.2f (%d packages)\n", c.getDestination() + ":", c.getTotalRevenue(), c.getPackageCount());
+
+        }
+
+        System.out.println(sb.toString());
     }
 }

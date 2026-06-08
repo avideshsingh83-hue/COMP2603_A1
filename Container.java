@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 
-/**
- * Represents a shipping container bound for a single destination.
- * Holds packages and enforces a maximum weight capacity.
- */
+
 public class Container {
     private static int nextContainerId = 1;
 
@@ -35,7 +32,7 @@ public class Container {
         return this.containerId;
     }
 
-    public String getDesination(){
+    public String getDestination(){
         return this.destination;
     }
 

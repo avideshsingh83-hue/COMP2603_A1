@@ -122,6 +122,16 @@ public class FreightTerminal {
         return bestRevenueDestination;
     }
 
+    public void printPackagesByDestination(){
+        for(Container c: dispatchedContainers){
+            System.out.println("Destination: "+ c.getDestination());
+            for(Package pkg: c.getPackages()){
+                System.out.println("  "+ pkg.toString());
+            }
+            System.out.printf("  Subtotal: $%.2f\n", c.getTotalRevenue());
+        }
+    }
+
     /**
      * Returns the list of active containers (for printing manifests in Driver).
      */

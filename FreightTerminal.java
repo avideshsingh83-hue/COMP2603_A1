@@ -35,6 +35,12 @@ public class FreightTerminal {
 
         for(String Destination: destinations){
             Container c = new Container(Destination);
+
+            for(Package pkg: pendingPackages){
+                if(pkg.getDestination().equals(Destination) && pkg.isExpress()){
+                    c.addPackage(pkg);
+                }
+            }
             for(Package pkg: pendingPackages){
                 if(pkg.getDestination().equals(Destination)){
                     c.addPackage(pkg);

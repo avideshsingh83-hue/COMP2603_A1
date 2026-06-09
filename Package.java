@@ -19,6 +19,14 @@ public class Package {
     private String destination;
     private boolean isFragile;
     private double declaredValue;
+    private boolean isExpress;
+
+    public Package(String senderName, String receiverName, double weightKg,
+                   int lengthCm, int widthCm, int heightCm, String destination,
+                   boolean isFragile, double declaredValue, boolean isExpress) {
+        this(senderName, receiverName, weightKg, lengthCm, widthCm, heightCm, destination, isFragile, declaredValue);
+        this.isExpress = isExpress;
+    }
 
     public Package(String senderName, String receiverName, double weightKg,
                    int lengthCm, int widthCm, int heightCm,
@@ -57,7 +65,11 @@ public class Package {
                    int lengthCm, int widthCm, int heightCm, String destination) {
        this(senderName, receiverName, weightKg, lengthCm, widthCm, heightCm, destination, false, 0.0);
     }
-    
+
+    public boolean isExpress() {
+        return this.isExpress;
+    }
+
     public String getTrackingId(){
         return this.trackingId;
     }
@@ -140,6 +152,10 @@ public class Package {
 
         double cost = getBillableWeightKg() * ratePerKg;
 
+        if(isExpress){
+            cost = cost *2;
+        }
+        
         if(isFragile){
             cost = cost * 1.25;
         }

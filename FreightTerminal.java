@@ -100,6 +100,16 @@ public class FreightTerminal {
         return null;
     }
 
+    public Package cancelPackage(String trackingId){
+        for(Package pkg: pendingPackages){
+            if(pkg.getTrackingId().equals(trackingId)){
+                pendingPackages.remove(pkg);
+                return pkg;
+            }
+        }
+        return null;
+    }
+
     /**
      * Returns the list of active containers (for printing manifests in Driver).
      */

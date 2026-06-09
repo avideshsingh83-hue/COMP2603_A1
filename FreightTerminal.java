@@ -110,6 +110,18 @@ public class FreightTerminal {
         return null;
     }
 
+    public String getMostProfitableDestination(){
+        String bestRevenueDestination = "";
+        double maxRevenue = 0.0;
+        for(Container c: dispatchedContainers){
+            if(c.getTotalRevenue() > maxRevenue){
+                maxRevenue = c.getTotalRevenue();
+                bestRevenueDestination = c.getDestination();
+            }
+        }
+        return bestRevenueDestination;
+    }
+
     /**
      * Returns the list of active containers (for printing manifests in Driver).
      */

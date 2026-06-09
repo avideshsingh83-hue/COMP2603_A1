@@ -86,9 +86,6 @@ public class Container {
         return sb.toString();
     }
 
-    /**
-     * Returns the list of packages (needed by FreightTerminal.findPackage).
-     */
     public ArrayList<Package> getPackages() {
         return packages;
     }

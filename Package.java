@@ -155,7 +155,7 @@ public class Package {
         if(isExpress){
             cost = cost *2;
         }
-        
+
         if(isFragile){
             cost = cost * 1.25;
         }

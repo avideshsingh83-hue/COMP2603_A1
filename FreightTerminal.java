@@ -132,9 +132,6 @@ public class FreightTerminal {
         }
     }
 
-    /**
-     * Returns the list of active containers (for printing manifests in Driver).
-     */
     public ArrayList<Container> getActiveContainers() {
         return activeContainers;
     }
